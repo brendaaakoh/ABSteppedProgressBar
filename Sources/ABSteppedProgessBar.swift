@@ -34,14 +34,14 @@ import CoreGraphics
         }
     }
     
-    public var currentIndex: Int = 0 {
-        willSet(newValue){
-            if let delegate = self.delegate {
-                delegate.progressBar?(self, willSelectItemAtIndex: newValue)
-            }
-        }
+    @IBInspectable public var currentIndex: Int = 0 {
+        //        willSet(newValue){
+        //            if let delegate = self.delegate {
+        //                delegate.progressBar?(self, willSelectItemAtIndex: newValue)
+        //            }
+        //        }
         didSet {
-            animationRendering = true
+            //animationRendering = true
             self.setNeedsDisplay()
         }
     }
@@ -181,11 +181,11 @@ import CoreGraphics
     }
     
     
-    override public func drawRect(rect: CGRect) {        
+    override public func drawRect(rect: CGRect) {
         super.drawRect(rect)
         
         let largerRadius = fmax(_radius, _progressRadius)
-
+        
         let distanceBetweenCircles = (self.bounds.width - (CGFloat(numberOfPoints) * 2 * largerRadius)) / CGFloat(numberOfPoints - 1)
         
         var xCursor: CGFloat = largerRadius
